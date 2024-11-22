@@ -94,6 +94,8 @@ const PqrsList = () => {
                 <TableCell><strong>Fecha Limite</strong></TableCell>
                 <TableCell><strong>Fecha Respuesta</strong></TableCell>
                 <TableCell><strong>Trazabilidad</strong></TableCell>
+                <TableCell><strong>Estado</strong></TableCell>
+                <TableCell><strong>Ultimo Comentario</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -120,6 +122,8 @@ const PqrsList = () => {
                     <TableCell>{pqrs.fecha_limite}</TableCell>
                     <TableCell>{pqrs.fecha_respuesta}</TableCell>
                     <TableCell>{pqrs.trazabilidad}</TableCell>
+                    <TableCell>{pqrs.estado}</TableCell>
+                    <TableCell>{pqrs.comentarios}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>

@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PqrsList from './pages/PqrsList';
 import PqrsDetail from './pages/PqrsDetail';
+import AutoClassify from './pages/AutoClassify';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Páginas adicionales
@@ -40,6 +41,7 @@ function App() {
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/pqrs-list" element={<PqrsList />} />
             <Route path="/pqrs-detail/:id" element={<PqrsDetail />} />
+            <Route path="/auto-classify" element={<AutoClassify />} />
           </Routes>
           <Footer />
         </div>
