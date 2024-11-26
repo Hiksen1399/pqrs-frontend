@@ -13,6 +13,7 @@ import {
   TablePagination,
   TextField,
   MenuItem,
+  Button,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -37,6 +38,25 @@ const PqrsList = () => {
 
     fetchPqrs();
   }, []);
+
+  const handleExport = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/export-pqrs', {
+        responseType: 'blob', // Importante para manejar el archivo como blob
+      });
+
+      // Crear una URL para descargar el archivo
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'pqrs.xlsx'); // Nombre del archivo
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.error('Error al exportar las PQRS:', error);
+      alert('Error al exportar las PQRS.');
+    }
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -74,6 +94,15 @@ const PqrsList = () => {
           <MenuItem value="QUEJA">Queja</MenuItem>
           <MenuItem value="PETICIÓN">Petición</MenuItem>
         </TextField>
+      </Box>
+      <Box sx={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleExport}
+        >
+          Exportar a Excel
+        </Button>
       </Box>
       {loading ? (
         <Typography variant="body1">Cargando datos...</Typography>
